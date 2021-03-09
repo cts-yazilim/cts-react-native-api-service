@@ -1,0 +1,52 @@
+{
+  "_from": "git+https://github.com/cts-yazilim/cts-react-native-api-service.git",
+  "_id": "cts-react-native-api-service@0.5.0",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/cts-react-native-api-service",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "cts-react-native-api-service@git+https://github.com/cts-yazilim/cts-react-native-api-service.git",
+    "name": "cts-react-native-api-service",
+    "escapedName": "cts-react-native-api-service",
+    "rawSpec": "git+https://github.com/cts-yazilim/cts-react-native-api-service.git",
+    "saveSpec": "git+https://github.com/cts-yazilim/cts-react-native-api-service.git",
+    "fetchSpec": "https://github.com/cts-yazilim/cts-react-native-api-service.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "git+https://github.com/cts-yazilim/cts-react-native-api-service.git#027679fbc8f50e1cada44167d8f31d8ab165329e",
+  "_shasum": "95b9ec9ee810b44b88feaec80cd0572fc072e478",
+  "_spec": "cts-react-native-api-service@git+https://github.com/cts-yazilim/cts-react-native-api-service.git",
+  "_where": "C:\\Projects\\GitLab\\yas_cay_alim_mobil",
+  "author": {
+    "name": "CTS YAZILIM"
+  },
+  "bugs": {
+    "url": "https://github.com/cts-yazilim/cts-react-native-api-service/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "This is a library for getting the referrer send by google broadcast on successful app install",
+  "homepage": "https://github.com/cts-yazilim/cts-react-native-api-service#readme",
+  "keywords": [
+    "react-native"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "cts-react-native-api-service",
+  "peerDependencies": {
+    "react-native": "^0.41.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cts-yazilim/cts-react-native-api-service.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.5.0"
+}
