@@ -9,10 +9,15 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.os.Environment;
 
+import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.ReadableArray;
+import com.facebook.react.bridge.UnexpectedNativeTypeException;
+import com.facebook.react.bridge.WritableMap;
 
 
 import org.json.JSONObject;
@@ -66,6 +71,14 @@ public class RNAndroidCtsApiServiceModule extends ReactContextBaseJavaModule {
     public RNAndroidCtsApiServiceModule(ReactApplicationContext reactContext) {
         super(reactContext);
         this.reactContext = reactContext;
+        Log.d("SELCUK","Inited");
+        try {
+            InitHttpClient();
+            
+        } catch (Exception ex) {
+Log.d("ERR",ex.toString());            //TODO: handle exception
+        }
+        Log.d("SELCUK","Inited Fin");
     }
 
     @Override
@@ -73,56 +86,122 @@ public class RNAndroidCtsApiServiceModule extends ReactContextBaseJavaModule {
         return "RNAndroidCtsApiService";
     }
 
-    // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@React METHOD
-    // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
     @ReactMethod
-    public void Backup() {
-        try {
-
-            // String path = "/data/data/com.yascayalim/databases/";
-            // Log.d("DBFILE", "Path: " + path);
-            // File directory = new File(path);
-            // File[] files = directory.listFiles();
-            // Log.d("DBFILE", "Size: " + files.length);
-            // for (int i = 0; i < files.length; i++) {
-            // Log.d("DBFILE", "FileName:" + files[i].getName());
-            // }
-
-            final String inFileName = reactContext.getDatabasePath("dataDB").getPath();
-            Log.d("DBFILE", inFileName);
-            File dbFile = new File(inFileName);
-            FileInputStream fis = new FileInputStream(dbFile);
-
-            String outFileName = Environment.getExternalStorageDirectory() + "/database_copy.db";
-            Log.d("DBFILE", outFileName);
-
-            // Open the empty db as the output stream
-            OutputStream output = new FileOutputStream(outFileName);
-
-            // Transfer bytes from the inputfile to the outputfile
-            byte[] buffer = new byte[1024];
-            int length;
-            while ((length = fis.read(buffer)) > 0) {
-                output.write(buffer, 0, length);
-            }
-
-            // Close the streams
-            output.flush();
-            output.close();
-            fis.close();
-            Log.d("DBFILE", "BAŞARILI");
-
-        } catch (Exception ex) {
-            Log.d("DBFILE", "DOSYA HATA" + ex.toString());
-        }
-
-    }
-
-    public void Test() throws KeyStoreException, CertificateException, NoSuchAlgorithmException, IOException, UnrecoverableKeyException, KeyManagementException {
+    public void GetToken(String Host, String Location,String UserName, String Password, String CihazNo, Callback callback) throws KeyStoreException, CertificateException, NoSuchAlgorithmException, IOException, UnrecoverableKeyException, KeyManagementException {
+        WritableMap resp = Arguments.createMap();
         Response response;
         Request req;
-        String Host = "https://yascay-api-test.jdecoffee.com/";
+        Test(Host);
+        // RequestBody formBody = new FormBody.Builder()
+        //         .add("grant_type", "password")
+        //         .add("username", "admin")
+        //         .add("Password", "12345")
+        //         .add("cihazno", "16a5b862c4c62620")
+        //         .build();
+         RequestBody formBody = new FormBody.Builder()
+         .add("grant_type", "password")
+         .add("username", UserName)
+         .add("Password", Password)
+         .add("cihazno", CihazNo)
+         .build();
+
+        req = GetNewRequest(Host,Location,Cookie,formBody,"");
+
+        try {
+            response = client.newCall(req).execute();
+
+            String bodyString =response.body().string();
+            resp.putInt("status", response.code());
+            Log.d("Succ","code succ");
+            Log.d("Succ",bodyString);
+            resp.putString("bodyString",bodyString );
+            Log.d("Succ","callback");
+            
+            callback.invoke(resp, null);
+        }
+
+        catch (Exception ex) {
+            Log.d("errr", ex.toString());
+            WritableMap er = Arguments.createMap();
+            er.putString("message", "The request timed out.");
+            er.putInt("code", -1001);
+            callback.invoke(null, er);
+        }
+    }
+
+    @ReactMethod
+    public void GraphGet(String Host, String Location,String Json, String Token, Callback callback) throws KeyStoreException, CertificateException, NoSuchAlgorithmException, IOException, UnrecoverableKeyException, KeyManagementException {
+        WritableMap resp = Arguments.createMap();
+        Response response;
+        Request req;
+        Test(Host);
+
+        // String json = "{" +
+        //         "query :'query{" +
+        //         "vadenakitalimlar{id, fiyat_Baslik_Id, aktif}" +
+        //         "}'" +
+        //         "}";
+        Log.d("JSON",Json);
+
+        RequestBody formBody = RequestBody.create(JSON,Json);
+
+        req = GetNewRequest(Host,Location,Cookie,formBody,Token);
+
+        try {
+            response = client.newCall(req).execute();
+            String bodyString =response.body().string();
+            resp.putInt("status", response.code());
+            Log.d("Succ","code succ");
+            Log.d("Succ",bodyString);
+            resp.putString("bodyString",bodyString );
+            Log.d("Succ","callback");
+            
+            callback.invoke(resp, null);
+        }
+        catch (Exception ex) {
+            Log.d("errr", ex.toString());
+            WritableMap er = Arguments.createMap();
+            er.putString("message", "The request timed out.");
+            er.putInt("code", -1001);
+            callback.invoke(null, er);
+
+        }
+    }
+    
+    @ReactMethod
+    public void PostValue(String Host, String Location,String Json, String Token, Callback callback) throws KeyStoreException, CertificateException, NoSuchAlgorithmException, IOException, UnrecoverableKeyException, KeyManagementException {
+        WritableMap resp = Arguments.createMap();
+        Response response;
+        Request req;
+        Test(Host);
+        RequestBody formBody = RequestBody.create(JSON,Json);
+
+        req = GetNewRequest(Host,Location,Cookie,formBody,Token);
+
+        try {
+            response = client.newCall(req).execute();
+            String bodyString =response.body().string();
+            resp.putInt("status", response.code());
+            Log.d("Succ","code succ");
+            Log.d("Succ",bodyString);
+            resp.putString("bodyString",bodyString );
+            Log.d("Succ","callback");
+            
+            callback.invoke(resp, null);
+        }
+        catch (Exception ex) {
+            Log.d("errr", ex.toString());
+            WritableMap er = Arguments.createMap();
+            er.putString("message", "The request timed out.");
+            er.putInt("code", -1001);
+            callback.invoke(null, er);
+        }
+    }
+
+    
+    public void Test(String Host) throws KeyStoreException, CertificateException, NoSuchAlgorithmException, IOException, UnrecoverableKeyException, KeyManagementException {
+        Response response;
+        Request req;
         String Location = "";
 
         req = GetNewRequest(Host,"",Cookie,null,"");
@@ -147,7 +226,6 @@ public class RNAndroidCtsApiServiceModule extends ReactContextBaseJavaModule {
         }
         catch (Exception ex) {
             Log.d("errr", ex.toString());
-
         }
     }
 
@@ -173,10 +251,12 @@ public class RNAndroidCtsApiServiceModule extends ReactContextBaseJavaModule {
 
     public void InitHttpClient() throws KeyStoreException, CertificateException, NoSuchAlgorithmException, IOException, UnrecoverableKeyException, KeyManagementException
     {
+        Log.d("SELCUK","PfxFile");
         InputStream caFileInputStream = reactContext.getResources().getAssets().open("cts.pfx");
-
+        Log.d("SELCUK","PfxFile");
         KeyStore keyStore = KeyStore.getInstance("PKCS12");
         keyStore.load(caFileInputStream, "TW9SxEpG7dduTg".toCharArray());
+        Log.d("SELCUK","Keystore");
 
         KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance("X509");
         keyManagerFactory.init(keyStore, "TW9SxEpG7dduTg".toCharArray());

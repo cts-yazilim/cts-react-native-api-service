@@ -7,21 +7,20 @@
   "_phantomChildren": {},
   "_requested": {
     "type": "git",
-    "raw": "cts-react-native-api-service@git+https://github.com/cts-yazilim/cts-react-native-api-service.git",
-    "name": "cts-react-native-api-service",
-    "escapedName": "cts-react-native-api-service",
-    "rawSpec": "git+https://github.com/cts-yazilim/cts-react-native-api-service.git",
+    "raw": "https://github.com/cts-yazilim/cts-react-native-api-service",
+    "rawSpec": "https://github.com/cts-yazilim/cts-react-native-api-service",
     "saveSpec": "git+https://github.com/cts-yazilim/cts-react-native-api-service.git",
     "fetchSpec": "https://github.com/cts-yazilim/cts-react-native-api-service.git",
     "gitCommittish": null
   },
   "_requiredBy": [
+    "#USER",
     "/"
   ],
-  "_resolved": "git+https://github.com/cts-yazilim/cts-react-native-api-service.git#027679fbc8f50e1cada44167d8f31d8ab165329e",
+  "_resolved": "git+https://github.com/cts-yazilim/cts-react-native-api-service.git#036634eb84db4388f82d96d0d782fb11d297c3c7",
   "_shasum": "95b9ec9ee810b44b88feaec80cd0572fc072e478",
-  "_spec": "cts-react-native-api-service@git+https://github.com/cts-yazilim/cts-react-native-api-service.git",
-  "_where": "C:\\Projects\\GitLab\\yas_cay_alim_mobil",
+  "_spec": "https://github.com/cts-yazilim/cts-react-native-api-service",
+  "_where": "C:\\Users\\saksar\\Desktop\\Denemeler\\ReactNative\\ofcaydeneme",
   "author": {
     "name": "CTS YAZILIM"
   },
