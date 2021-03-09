@@ -1,0 +1,26 @@
+[
+    {
+        "outputFile": "C:\\Users\\saksar\\Desktop\\cts-react-native-android-handterminal-printer-nfc\\android\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v18\\values-v18.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 48,
+                    "endOffset": 99
+                },
+                "from": {
+                    "file": "C:\\Users\\saksar\\.android\\build-cache\\4cb44e2549da8b99e4bf9f3908b86ba03b630d6d\\output\\res\\values-v18\\values-v18.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 280,
+                        "endColumn": 48,
+                        "endOffset": 324
+                    }
+                }
+            }
+        ]
+    }
+]
