@@ -1,0 +1,34 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Projects\\GitLab\\yas_cay_alim_mobil\\node_modules\\cts-react-native-api-service\\android\\build\\intermediates\\res\\merged\\release\\values-port\\values-port.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\saksar\\.gradle\\caches\\transforms-2\\files-2.1\\90ffb3604009a738a2ab0c02c5142290\\res\\values-port\\values-port.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "55",
+                        "endOffsets": "106"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Projects\\GitLab\\yas_cay_alim_mobil\\node_modules\\cts-react-native-api-service\\android\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-port\\values-port.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\saksar\\.gradle\\caches\\transforms-2\\files-2.1\\90ffb3604009a738a2ab0c02c5142290\\res\\values-port\\values-port.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "55",
+                        "endOffsets": "106"
+                    }
+                }
+            ]
+        }
+    ]
+}

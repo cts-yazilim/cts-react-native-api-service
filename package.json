@@ -17,10 +17,10 @@
     "#USER",
     "/"
   ],
-  "_resolved": "git+https://github.com/cts-yazilim/cts-react-native-api-service.git#036634eb84db4388f82d96d0d782fb11d297c3c7",
+  "_resolved": "git+https://github.com/cts-yazilim/cts-react-native-api-service.git#a62e7f9a348dff191c7b72fb4be9448ed6890692",
   "_shasum": "95b9ec9ee810b44b88feaec80cd0572fc072e478",
   "_spec": "https://github.com/cts-yazilim/cts-react-native-api-service",
-  "_where": "C:\\Users\\saksar\\Desktop\\Denemeler\\ReactNative\\ofcaydeneme",
+  "_where": "C:\\Projects\\GitLab\\yas_cay_alim_mobil",
   "author": {
     "name": "CTS YAZILIM"
   },

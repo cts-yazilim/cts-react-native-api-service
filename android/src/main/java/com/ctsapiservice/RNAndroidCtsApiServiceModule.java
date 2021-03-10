@@ -136,13 +136,6 @@ Log.d("ERR",ex.toString());            //TODO: handle exception
         Request req;
         Test(Host);
 
-        // String json = "{" +
-        //         "query :'query{" +
-        //         "vadenakitalimlar{id, fiyat_Baslik_Id, aktif}" +
-        //         "}'" +
-        //         "}";
-        Log.d("JSON",Json);
-
         RequestBody formBody = RequestBody.create(JSON,Json);
 
         req = GetNewRequest(Host,Location,Cookie,formBody,Token);

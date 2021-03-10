@@ -15,7 +15,8 @@ var CtsApiSer = {
                 } 
                 else {
                     console.log(res);
-                    res.json = JSON.parse(res.bodyString);
+                    console.log("changing")
+                    res.data = JSON.parse(res.bodyString);
                     res.text =  res.bodyString;
                     fulfill(res);
                 }
@@ -28,6 +29,11 @@ GraphGet :function(Host,Location,Token,data)
 {
     return new Promise((fulfill, reject) => {
     
+        console.log(Host);
+        console.log(Location);
+        console.log(Token);
+        console.log(data);
+        console.log(JSON.stringify(data));
         NativeModules.RNAndroidCtsApiService.GraphGet(Host,Location,JSON.stringify(data),Token,  (res,err ) => {
             if (err) {
                 console.log(err);
@@ -35,7 +41,7 @@ GraphGet :function(Host,Location,Token,data)
             } 
             else {
                 console.log(res);
-                res.json = JSON.parse(res.bodyString);
+                res.data = JSON.parse(res.bodyString);
                 res.text =  res.bodyString;
                 fulfill(res);
             }
@@ -56,7 +62,7 @@ PostValue :function(Host,Location,Token,data)
             } 
             else {
                 console.log(res);
-                res.json = JSON.parse(res.bodyString);
+                res.data = JSON.parse(res.bodyString);
                     res.text =  res.bodyString;
                     fulfill(res);
             }
