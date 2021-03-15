@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>cts-react-native-android-handterminal-printer-nfc</name>
+	<name>cts-react-native-api-service</name>
 	<comment>Project android created by Buildship.</comment>
 	<projects>
 	</projects>
@@ -22,7 +22,7 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1614765640474</id>
+			<id>0</id>
 			<name></name>
 			<type>30</type>
 			<matcher>

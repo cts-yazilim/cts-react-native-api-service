@@ -1,14 +1,20 @@
 'use strict';
 
 import { NativeModules, Platform } from 'react-native';
-var Q = require('q');
 
 var CtsApiSer = {
-    GetToken :function(Host,Location,UserName,Password,CihazNo)
+    InitClient : function(type)
+    {
+        if(type=="Local")
+        NativeModules.RNAndroidCtsApiService.InitHttpClientLocal();
+        else
+        NativeModules.RNAndroidCtsApiService.InitHttpClient();
+    },
+    GetToken :function(Host,Location,UserName,Password,CihazNo,KartNo)
     {
         return new Promise((fulfill, reject) => {
         
-            NativeModules.RNAndroidCtsApiService.GetToken(Host,Location,UserName,Password,CihazNo, (res,err) => {
+            NativeModules.RNAndroidCtsApiService.GetToken(Host,Location,UserName,Password,CihazNo,KartNo, (res,err) => {
                 if (err) {
                     console.log(err);
                     reject(err);
