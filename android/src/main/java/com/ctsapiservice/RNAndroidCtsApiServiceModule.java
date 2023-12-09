@@ -148,14 +148,14 @@ public class RNAndroidCtsApiServiceModule extends ReactContextBaseJavaModule {
             UnrecoverableKeyException, KeyManagementException {
 
         Log.d("SELCUK", "HtppClient Init");
-        InputStream caFileInputStream = reactContext.getResources().getAssets().open("cts.pfx");
-        Log.d("SELCUK", "PfxFile");
+        InputStream caFileInputStream = reactContext.getResources().getAssets().open("internet2022.pfx");
+        Log.d("SELCUK", "PfxFileNewInternet2022");
         KeyStore keyStore = KeyStore.getInstance("PKCS12");
-        keyStore.load(caFileInputStream, "TW9SxEpG7dduTg".toCharArray());
-        Log.d("SELCUK", "Keystore");
+        keyStore.load(caFileInputStream, "VFEry&IJH%t4rfRg".toCharArray());
+        Log.d("SELCUK", "KeystoreNEW");
 
         KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance("X509");
-        keyManagerFactory.init(keyStore, "TW9SxEpG7dduTg".toCharArray());
+        keyManagerFactory.init(keyStore, "VFEry&IJH%t4rfRg".toCharArray());
 
         TrustManagerFactory trustManagerFactory = TrustManagerFactory
                 .getInstance(TrustManagerFactory.getDefaultAlgorithm());
